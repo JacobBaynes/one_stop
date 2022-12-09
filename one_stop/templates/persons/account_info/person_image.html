@@ -1,0 +1,6 @@
+{% load static %}
+<object class="img-thumbnail" data="https://vprodlbapi001.highpoint.edu/image.asp?id={{ person.uuid }}" type="image/png"
+        style="height: auto; max-width:100%">
+        <img src="{% static '/media/images/default.png' %}" alt="{{person.user.first_name}} {{p.user.last_name}} Photo"
+                style="height: auto; max-width:100%" />
+</object>

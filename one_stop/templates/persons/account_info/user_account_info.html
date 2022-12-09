@@ -1,0 +1,78 @@
+<!-- Person info Section -->
+<div class="card mt-3 border border-3 border-dark">
+    <div class="card-header d-flex col justify-content-center">{% include 'persons/account_info/person_image.html' %}
+    </div>
+    <div class="justify-content-center">
+        <dl class="p-3">
+            {% if person.classification == 'DY' or person.classification == 'DR' or person.classification == 'GR' or person.classification == 'CE' or person.classification == 'SD' or person.classification == 'EX' or person.classification == 'Alumni' or person.classification == 'Incoming' or person.classification == 'IncomingDR' or person.classification == 'IncomingGR' %}
+            <dt>Student ID</dt> {% else %} <dt>Employee ID</dt>
+            {% endif %}
+            <dd>{{person.uuid}}</dd>
+            <dt>Name</dt>
+            <dd>{{person.preferred_name}} {{person.user.last_name}}</dd>
+            {% if person.user.email %}
+            <dt>HPU Email</dt>
+            <dd>{{person.user.email}}</dd>
+            {% endif %}
+            {% if off_campus_email and off_campus_email != 'None' %}
+            <dt>Alternative Email</dt>
+            <dd>{{off_campus_email}}</dd>
+            {% endif %}
+            {% if person.position %}
+            <dt>Position</dt>
+            <dd>{{person.position}}</dd>
+            {% endif %}
+            {% if person.phone %}
+            <dt>Work Phone</dt>
+            <dd>{{person.phone}}</dd>
+            {% endif %}
+            {% if personal_phone and personal_phone != 'None' %}
+            <dt>Personal Phone</dt>
+            <dd>{{personal_phone}}</dd>
+            {% endif %}
+            {% if dept != 'None'%}
+            <dt>Department</dt>
+            <dd>{{dept}}</dd>
+            {% endif %}
+            {% if office and office != 'None'%}
+            <dt>Office</dt>
+            <dd>{{office}}</dd>
+            {% endif %}
+            {% if person.dob and person.dob != 'None'%}
+            <dt>Birth Date</dt>
+            <dd>{{person.dob}}</dd>
+            {% endif %}
+            {% if person.ssn != '' and person.ssn and perms.persons.view_ssn or person.ssn != '' and request.user.is_superuser %}
+            <dt>Last 4 of SSN</dt>
+            <dd>{{person.ssn}}</dd>
+            {% endif %}
+            {% if person.classification %}
+            <dt>Classification</dt>
+            <dd>{{person.classification}}</dd>
+            {% endif %}
+            {% if person.campusroom %}
+            <dt>Campus Address</dt>
+            <dd>{{person.campusroom}}</dd>
+            {% endif %}
+            {% if person.campusbox %}
+            <dt>Campus Box</dt>
+            <dd>{{person.campusbox}}</dd>
+            {% endif %}
+
+            {% if address and address != 'None' %}
+            {% if address.ADDRESS_LINE_2 %}
+            <dt>Address 1</dt>
+            <dd>{{address.ADDRESS_LINE_1}}</dd>
+            <dd>{{address.CITY}}, {{address.STATE}} {{address.ZIP}}</dd>
+            <dt>Address 2</dt>
+            <dd>{{address.ADDRESS_LINE_2}}</dd>
+            <dd>{{address.CITY}}, {{address.STATE}} {{address.ZIP}}</dd>
+            {% else %}
+            <dt>Address</dt>
+            <dd>{{address.ADDRESS_LINE_1}}</dd>
+            <dd>{{address.CITY}}, {{address.STATE}} {{address.ZIP}}</dd>
+            {% endif %}
+            {% endif %}
+        </dl>
+    </div>
+</div>

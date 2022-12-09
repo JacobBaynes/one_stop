@@ -1,0 +1,45 @@
+<div>
+    {% if ad_info %}
+    <div class="row p-3">
+        <div class="bg-primary pt-1 mb-2 text-white rounded border">
+            <h2>Active Directory</h2>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <h4>Distinguished Name</h4>
+                <p>{{ad_info.0}}</p>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <h4>Account Disabled?</h4>
+                        <p>{{ad_info.1}}</p>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <h4>Account Locked?</h4>
+                        <p>{{ad_info.2}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-12">
+                <h4>Groups</h4>
+                <ul>
+                    {% for group in ad_info.3 %}
+                    <li>
+                        {{group}}
+
+                    </li>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

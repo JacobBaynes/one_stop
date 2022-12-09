@@ -1,0 +1,12 @@
+{% load el_pagination_tags %}
+{% paginate 10 bbts_stu_meal_trans %}
+{% if bbts_stu_meal_trans %}
+{% for b in bbts_stu_meal_trans %}
+<tr>
+    <td>{{ b.CUST_ID }}</td>
+    <td>{{ b.NAME }}</td>
+    <td>{{ b.Funcdate }}</td>
+</tr>
+{% endfor %}
+{% endif %}
+{% show_pages %}

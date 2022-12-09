@@ -1,0 +1,124 @@
+<div>
+    {% if ccure != 'None'%}
+    <div class="row p-3">
+        <div class="bg-primary pt-1 mb-2 text-white rounded border">
+            <h2>General Information</h2>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <h4>Door Access History</h4>
+            </div>
+            <div class="row">
+                <table id="table" class="table table-striped table-bordered nowrap display" style="width:100%" ,
+                    data-order='[[ 1, "asc" ]]'>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Access
+                            </th>
+                            <th scope="col">
+                                Date & Time
+                            </th>
+                            <th scope="col">
+                                Name
+                            </th>
+                            <th scope="col">
+                                Door
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in doors %}
+                        <tr>
+                            <td>
+                                {{d.MessageType}}
+                            </td>
+                            <td data-order="{{ t.JS_TimeStamp }}">
+                                {{d.MessageUTC }}
+                            </td>
+                            <td>
+                                {{d.Name}}
+                            </td>
+                            <td>
+                                {{d.Door}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xl-6 col-lg-8 col-md-10 col-12 mb-3">
+            <div class="row ps-2">
+                <h4>Card Disabled</h4>
+            </div>
+            <div class="row ps-2">
+                {% if ccure.Disabled == False %}
+                <div class="col-sm-6">
+                    <p>No</p>
+                </div>
+                {% elif ccure.Disabled == True %}
+                <div class="col-sm-6">
+                    <p>Yes</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row ps-2">
+                <h4>Card Numbers</h4>
+            </div>
+            <div class="row ps-2">
+                <div class="col">
+                    {% for n in ccure.CardNumber %}
+                    {{ n }} <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-8 col-md-10 col-12 mb-3">
+            <div class="row ps-2">
+                <h4>Passport Card Number</h4>
+            </div>
+            <div class="row ps-2">
+                <div class="col-sm-6">
+                    <p>{{ ccure.BBCardNumber_ }}</p>
+                </div>
+            </div>
+
+            <div class="row ps-2">
+                <h4>Badge Layout</h4>
+            </div>
+            <div class="row ps-2">
+                <div class="col-6">
+                    {% for b in ccure.BadgeLayoutName %}
+                    {{ b }} <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col-xl-6 col-lg-8 col-md-10 col-12 mb-3">
+            <div class="row ps-2">
+                <h4>Current Clearances</h4>
+            </div>
+            <div class="row ps-2">
+                <div class="col-8">
+                    {% for c in ccure.Clearances %}
+                    {{ c }} <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col">
+            <b>
+                <p>User Has No CCure Data</p>
+            </b>
+        </div>
+    </div>
+    {% endif %}
+</div>

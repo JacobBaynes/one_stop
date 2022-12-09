@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if person %}
+<div class="col-lg-12">
+    <div class="container">
+        <div class="row">
+            <!--Begin Person Info Screen-->
+            <div class="col-sm-2 col-md-2 col-lg-2 mt-5">
+                {% include 'persons/account_info/user_account_info.html' %}
+            </div>
+            <div class="col-sm-8 col-md-10 col-lg-10">
+                {% include 'persons/components/carousel.html' %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% else %}
+    <div>
+        <div class="col-4 text-center">
+            <h2>Please Log in to view your information</h2>
+        </div>
+    </div>
+</div>
+{% endif %} {% endblock %}
+{% block js %}
+
+
+<script>
+    $(document).ready(function () {
+        $('#trans_table').DataTable({
+            "responsive": true
+        });
+    });
+    $(document).ready(function () {
+        $('#doors_table').DataTable({
+            "responsive": true
+        });
+    });
+    $(document).ready(function () {
+        $('#class_table').DataTable({
+            "responsive": true
+        });
+        $('#class_table').show();
+        $(window).trigger('resize');
+    });
+    $(document).ready(function () {
+        $('#starrez_table').DataTable({
+            "responsive": true,
+        })
+    });
+</script>
+{% endblock %}

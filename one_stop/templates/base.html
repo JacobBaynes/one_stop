@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static '/persons/style.css' %}">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/r-2.2.9/datatables.min.css" />
+    {% block title %}{% endblock %}
+</head>
+
+<body>
+    {% include 'navbar/navbar.html' %}
+    {% block content %}
+    {% endblock %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/r-2.2.9/datatables.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.11.3/sorting/datetime-moment.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.11.3/sorting/num-html.js"></script>
+    <script>
+        var btnContainer = document.getElementById("infoItem");
+
+        var btns = btnContainer.getElementsByClassName("btn");
+
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
+    {% block js %}
+    {% endblock %}
+
+</body>
+
+</html>

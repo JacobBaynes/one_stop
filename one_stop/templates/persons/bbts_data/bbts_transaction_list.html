@@ -1,0 +1,36 @@
+{% load el_pagination_tags %}
+{% paginate 10 bbts_trans_general %}
+{% for t in bbts_trans_general %}
+<tbody>
+    <tr>
+        <td>
+            ${{ t.Amount }}
+        </td>
+        <td>
+            {{ t.TranTime }}
+        </td>
+        <td>
+            {{ t.PointOfSaleInfo }}
+        </td>
+    </tr>
+    {% comment %} <tr>
+        <td>
+            {{ t.SVTranAmount }}
+        </td>
+        <td>
+            {{ t.SVTranDateTime }}
+        </td>
+        <td>
+            {{ t.POSName }}
+        </td>
+        <td>
+            {{ t.SVAccountTypeName }}
+        </td>
+        <td>
+            {{ t.SVTranType }}
+        </td>
+    </tr> {% endcomment %}
+</tbody>
+{% endfor %}
+{% show_pages %}
+</table>

@@ -1,0 +1,128 @@
+<div>
+    {% if classes != 'None'%}
+    <div class="row p-3">
+        <div class="bg-primary pt-1 mb-2 text-white rounded border">
+            <h2>Classes</h2>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <h4>Schedule</h4>
+            </div>
+            <div class="row" id="">
+                <div class="col-12">
+                    <table id="class_table" class="table table-striped nowrap table-bordered display" style="width:100%"
+                        data-order='[[ 10, "asc" ]]'>
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Term
+                                </th>
+                                <th scope="col">
+                                    Course
+                                </th>
+                                <th scope="col">
+                                    Course Name
+                                </th>
+                                {% if classes.0.Instructor %}
+                                <th scope="col">
+                                    Instructor
+                                </th>
+                                {% endif %}
+                                <th scope="col">
+                                    Credit Hours
+                                </th>
+                                <th scope="col">
+                                    M
+                                </th>
+                                <th scope="col">
+                                    T
+                                </th>
+                                <th scope="col">
+                                    W
+                                </th>
+                                <th scope="col">
+                                    TH
+                                </th>
+                                <th scope="col">
+                                    F
+                                </th>
+                                <th scope="col">
+                                    Start Time
+                                </th>
+                                <th scope="col">
+                                    End Time
+                                </th>
+                                <th scope="col">
+                                    Building
+                                </th>
+                                <th scope="col">
+                                    Classroom
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for c in classes %}
+                            <tr>
+                                <td>
+                                    {{c.Term}}
+                                </td>
+                                <td>
+                                    {{c.Course}}
+                                </td>
+                                <td>
+                                    {{c.CourseName}}
+                                </td>
+
+                                {% if c.Instructor %}
+                                <td>
+                                    {{c.Instructor}}
+                                </td>
+
+                                {% endif %}
+
+                                <td>
+                                    {{c.CreditHours}}
+                                </td>
+                                <td>
+                                    {{c.M}}
+                                </td>
+                                <td>
+                                    {{c.T}}
+                                </td>
+                                <td>
+                                    {{c.W}}
+                                </td>
+                                <td>
+                                    {{c.TH}}
+                                </td>
+                                <td>
+                                    {{c.F}}
+                                </td>
+                                <td>
+                                    {{c.Start_Time }}
+                                </td>
+                                <td>
+                                    {{c.End_Time }}
+                                </td>
+                                <td>
+                                    {{c.Building}}
+                                </td>
+                                <td>
+                                    {{c.Classroom}}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div>
+        <b>
+            <p>User does not have a class schedule</p>
+        </b>
+    </div>
+    {% endif %}
+</div>

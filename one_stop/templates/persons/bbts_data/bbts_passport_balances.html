@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <h2>Passport Balances</h2>
+        </div>
+        <div class="p-2">
+
+            <div class="row">
+                <h4>Accounts</h4>
+            </div>
+            <div class="row">
+                {% if bbts_balance_gen_acc %}
+                <div class="col">
+                    <p>General:</p>
+                    {% comment %} <p>Dining Dollars:</p> {% endcomment %}
+                </div>
+                <div class="col">
+                    <p>${{ bbts_balance_gen_acc.General_Account_Balance }} </p>
+                </div>
+                {% endif %}
+            </div>
+
+            {% if bbts_magic_meal != 'None' or bbts_stu_meal_trans%}
+            <div class="row">
+                <h4>Meal Plan</h4>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Dining Plan:</p>
+                    <p>Meals Left This Week:</p>
+                    <p>Available Magic Meals:</p>
+                </div>
+                <div class="col">
+                    {% for b in bbts_stu_meal_trans|slice:":1"%}
+                    <p>{{ b.BOARDPLAN }} </p>
+                    {% endfor %}
+                    <p>{{ bbts_magic_meal.WEEKBALANCE }} </p>
+                    <p>{{ bbts_magic_meal.PERIOD4BALANCE }} </p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

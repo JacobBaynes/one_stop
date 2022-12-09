@@ -1,0 +1,7 @@
+{% load static %}
+<div class="container w-100">
+    <object class="h-200" data="https://vprodlbapi001.highpoint.edu/image.asp?id={{ p.uuid }}" type="image/png">
+        <img class="img-responsive" src="{% static '/media/images/default.png' %}"
+            alt="{{person.user.first_name}} {{p.user.last_name}} Photo" />
+    </object>
+</div>

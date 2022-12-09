@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if person %}
+<section>
+    <div class="container">
+        <div class="row">
+            <!--Begin Person Info Screen-->
+            <div class="col-md-3 col-12 mt-5">
+                {% include 'persons/account_info/user_account_info.html' %}
+            </div>
+            <div class="col-md-9 col-12">
+                {% include 'persons/components/carousel.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% else %}
+<section>
+    <div class="">
+        <div class="col-4 text-center">
+            <h2>Please Log in to view your information</h2>
+        </div>
+    </div>
+</section>
+{% endif %} {% endblock %}
+{% block js %}
+
+
+<script>
+    $(document).ready(function () {
+        $('#trans_table').DataTable({
+            "responsive": true
+        });
+    });
+    $(document).ready(function () {
+        $('#doors_table').DataTable({
+            "responsive": true
+        });
+        $('#doors_table').show();
+        $(window).trigger('resize');
+    });
+    $(document).ready(function () {
+        $('#class_table').DataTable({
+            "responsive": true
+        });
+        $('#class_table').show();
+        $(window).trigger('resize');
+    });
+    $(document).ready(function () {
+        $('#starrez_table').DataTable({
+            "responsive": true,
+            "paging": false,
+        }).columns.adjust().responsive.recalc();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,87 @@
+@mixin for-phone-only {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}
+
+
+body {
+    background-image: url(https://media.highpoint.edu/image/upload/v1639407004/Milan/Home/Background_oslhtg.png) !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+}
+
+.cardback {
+    background: url(https://media.highpoint.edu/image/upload/v1636721198/Milan/Home/BACKGROUND_pzupcm.png) fixed center no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-position-x: 0px;
+}
+
+.card-body {
+    padding: 2px !important;
+}
+
+.carousel-inner {
+    border-style: solid;
+    padding-bottom: 1em;
+    background-color: white;
+}
+
+div.border-primary {
+    background-color: #330072 !important;
+}
+
+.bg-primary,
+.border-primary {
+    background-color: #330072 !important;
+}
+
+button.btn-primary {
+    background-color: #330072 !important;
+    border-color: #280059 !important;
+    color: gainsboro;
+}
+
+button.btn-check:active {
+    background-color: #006e72 !important;
+    border-color: #876aaa !important;
+    color: gainsboro;
+}
+
+button.active {
+    background-color: #006e72;
+}
+
+.btn-check:active+.btn-primary,
+.btn-check:checked+.btn-primary,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff !important;
+    background-color: #280059 !important;
+    border-color: #fff !important;
+}

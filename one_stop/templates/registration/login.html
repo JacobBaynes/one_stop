@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div >
+{% if user.is_authenticated %}
+<div class="card justify-content-center">
+    <div class="card-body text-center">
+        <h2>You are already logged in.</h2>
+    </div>
+</div>
+{% else %}
+<div class="row mt-5 justify-content-md-center container-fluid ">
+
+<div class="shadow p-3 mb-5 bg-body rounded col-md-6 align-middle card text-dark bg-light justify-content-center ">
+    <div class="card-header">
+            HIGH POINT UNIVERSITY
+    </div>
+        <div class="card-body ">
+    <div class="card-text justify-content-center">
+        <div class="justify-content-center">
+            <form method="post" class="form-group">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <button type="submit" class="btn btn-success">LOGIN</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+{% endif %}
+{% endblock %}

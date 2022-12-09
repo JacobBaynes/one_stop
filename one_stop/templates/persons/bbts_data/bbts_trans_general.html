@@ -1,0 +1,67 @@
+{% if bbts_trans_general %}
+<table id="table" class="table table-bordered bg-light table-responsive-md display">
+    <thead>
+        <tr>
+            <th scope="col">
+                Amount
+            </th>
+            <th scope="col">
+                Date & Time
+            </th>
+            <th scope="col">
+                Location
+            </th>
+        </tr>
+        {% comment %} <tr>
+            <th scope="col">
+                Amount
+            </th>
+            <th scope="col">
+                Date & Time
+            </th>
+            <th scope="col">
+                Location
+            </th>
+            <th scope="col">
+                Account
+            </th>
+            <th scope="col">
+                Transaction Type
+            </th>
+        </tr> {% endcomment %}
+    </thead>
+
+    <tbody>
+        {% for t in bbts_trans_general %}
+        <tr>
+            <td>
+                ${{ t.Amount }}
+            </td>
+            <td>
+                {{ t.TranTime }}
+            </td>
+            <td>
+                {{ t.PointOfSaleInfo }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% comment %} <tr>
+    <td>
+        {{ t.SVTranAmount }}
+    </td>
+    <td>
+        {{ t.SVTranDateTime }}
+    </td>
+    <td>
+        {{ t.POSName }}
+    </td>
+    <td>
+        {{ t.SVAccountTypeName }}
+    </td>
+    <td>
+        {{ t.SVTranType }}
+    </td>
+</tr> {% endcomment %}
+{% endif %}

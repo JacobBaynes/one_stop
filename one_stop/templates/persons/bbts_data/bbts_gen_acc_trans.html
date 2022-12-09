@@ -1,0 +1,64 @@
+<table id="table" class="table table-striped table-bordered nowrap display" style="width:100%"
+    data-order='[[ 0, "desc" ]]'>
+    <thead>
+        <tr>
+            <th scope="col">
+                Date & Time
+            </th>
+            <th scope="col">
+                Location
+                </th>
+                <th scope="col">
+                Account
+            </th>
+            <th scope="col">
+                Type
+            </th>
+            <th scope="col">
+                Amount
+            </th>
+            <th scope="col">
+                Meals Used
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in bbts_gen_acc_trans %}
+        <tr>
+            <td data-order="{{ t.JS_TimeStamp }}">
+                {{ t.DateTime }}
+            </td>
+            <td>
+                {{ t.Location }}
+            </td>
+            <td>
+                {{ t.Account }}
+            </td>
+            <td>
+                {{ t.Type }}
+            </td>
+            {% if t.Amount == None %}
+            <td class="text-end">
+                --
+            </td>
+            {% else %}
+            <td class="text-end">
+                ${{ t.Amount|floatformat:2 }}
+            </td>
+            {% endif %}
+            {% if t.MealsUsed == None %}
+            <td class="text-end">
+                --
+            </td>
+            {% else %}
+            <td class="text-end">
+                {{ t.MealsUsed }}
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>

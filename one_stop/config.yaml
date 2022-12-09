@@ -1,0 +1,16 @@
+host: vdevapp043.highpoint.edu
+username: jbaynes
+password: my&8MwoYocdc:ZAdW7?gC7j&
+local_location: C:\\Users\\jbaynes\\dev\\PurplePages # do not change this line
+dest_location: /opt/milan_2022
+srv_user: www-data
+exclude:
+  - ".git"
+  - ".gitignore"
+  - "python_ldap-3.4.0-cp310-cp310-win_amd64.whl"
+  - "json_uploads"
+  - "deploy.py"
+  - "export.tgz"
+  - "venv"
+  - "config.yaml"
+  - "test.py"

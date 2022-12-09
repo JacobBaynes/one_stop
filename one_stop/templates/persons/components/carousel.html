@@ -1,0 +1,72 @@
+<div id="infoItem" class="carousel row" data-bs-touch="true" data-bs-ride="false" data-bs-interval="false">
+    <div class="d-flex justify-content-center m-2 mt-3">
+
+        <div class="btn-group-toggle" data-toggle="button" aria-label="Item">
+
+
+            {% if user.is_superuser %}
+
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-home" role="tab" data-bs-target="#infoItem" data-bs-slide-to="0" aria-label="0"
+                aria-current="true" aria-label="Active Directory">Active Directory</button>
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-1" role="tab" data-bs-target="#infoItem" data-bs-slide-to="1" aria-label="1"
+                aria-current="true" aria-label="Recent Transactions">Transaction Information</button>
+            <button type="button" class="btn btn-secondary border" id="list-ccure-list" data-bs-toggle="list"
+                href="#list-2" role="tab" data-bs-target="#infoItem" data-bs-slide-to="2" aria-label="2"
+                aria-label="Security">Security</button>
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-3" role="tab" data-bs-target="#infoItem" data-bs-slide-to="3" aria-label="3"
+                aria-current="true" aria-label="Course Information">Course Information</button>
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-4" role="tab" data-bs-target="#infoItem" data-bs-slide-to="4" aria-label="4"
+                aria-current="true" aria-label="Student Housing">Student Housing</button>
+
+            {% elif perms.persons.security %}
+            <button type="button" class="btn btn-secondary border" id="list-ccure-list" data-bs-toggle="list"
+                href="#list-home" role="tab" data-bs-target="#infoItem" data-bs-slide-to="0" aria-label="0"
+                aria-label="Security">Security</button>
+
+            {% elif perms.persons.help_desk %}
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-home" role="tab" data-bs-target="#infoItem" data-bs-slide-to="0" aria-label="0"
+                aria-current="true" aria-label="Course Information">Course Information</button>
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-4" role="tab" data-bs-target="#infoItem" data-bs-slide-to="4" aria-label="4"
+                aria-current="true" aria-label="Student Housing">Student Housing</button>
+
+            {% elif perms.persons.concierge %}
+            <button type="button" class="btn btn-secondary border" id="list-Recent-list" data-bs-toggle="list"
+                href="#list-home" role="tab" data-bs-target="#infoItem" data-bs-slide-to="0" aria-label="0"
+                aria-current="true" aria-label="Student Housing">Student Housing</button>
+            {% endif %}
+
+            {% comment %} {% if user.is_superuser %}
+            <button type="button" class="btn btn-secondary border" id="list-perms-list" data-bs-toggle="list"
+                href="#list-2" role="tab" data-bs-target="#infoItem" data-bs-slide-to="2" aria-label="2"
+                aria-label="Permissions">Permissions</button>
+            {% endif %} {% endcomment %}
+        </div>
+    </div>
+    <div class="container rounded carousel-inner overflow-auto" role="listbox">
+        {% if user.is_superuser %}
+
+        <div class="carousel-item active">{% include 'persons/ad_data/active_directory.html' %}</div>
+        <div class="carousel-item">{% include 'persons/bbts_data/bbts_section.html' %}</div>
+        <div class="carousel-item">{% include 'persons/ccure_data/ccure.html' %}</div>
+        <div class="carousel-item">{% include 'persons/class_data/classes.html' %}</div>
+        <div class="carousel-item">{% include 'persons/starrez_data/starrez.html' %}</div>
+
+        {% elif perms.persons.security %}
+        <div class="carousel-item active">{% include 'persons/ccure_data/ccure.html' %}</div>
+
+        {% elif perms.persons.help_desk %}
+        <div class="carousel-item active">{% include 'persons/class_data/classes.html' %}</div>
+
+        {% elif perms.persons.concierge %}
+        <div class="carousel-item active">{% include 'persons/starrez_data/starrez.html' %}</div>
+        {% endif %}
+
+
+    </div>
+</div>
